@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trial task</title>
+
+  <!-- MUST HAVE for responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    crossorigin="anonymous"
+  />
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e3a8a;
+      --success: #16a34a;
+      --text: #333;
+      --gray-light: #f3f4f6;
+      --gray-dark: #d1d5db;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px;
+    }
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: 2px solid var(--primary);
+      background: var(--primary);
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--primary);
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .gray-section {
+      background: linear-gradient(to bottom, var(--gray-light), var(--gray-dark));
+      padding-bottom: 60px;
+    }
+
+    .features-title,
+    .pricing-title {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      margin: 20px 0;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .card-feature {
+      align-items: center;
+      text-align: center;
+    }
+
+    .card-feature i {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .card.large {
+      min-height: 250px;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .price {
+      font-size: 32px;
+      font-weight: 700;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 12px;
+    }
+
+    .cards .card.large:nth-child(2) .price,
+    .cards .card.large:nth-child(2) .currency {
+      color: var(--primary);
+    }
+
+    .currency {
+      font-size: 16px;
+      vertical-align: top;
+    }
+
+    .period {
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .project-list {
+      width: 100%;
+      font-size: 14px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .project-item {
+      padding: 6px 0;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .project-item i {
+      color: var(--success);
+    }
+
+    .project-item.underline {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .choose-btn {
+      margin-top: auto;
+      padding: 10px;
+      width: 100%;
+      border-radius: 6px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--primary-dark);
+      color: #fff;
+    }
+
+    .choose-btn.primary {
+      background: var(--primary);
+    }
+
+    .choose-btn:hover {
+      opacity: 0.9;
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 0;
+      width: 100%;
+      height: 32px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 992px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .container {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 16px;
+      }
+
+      .header .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .buttons .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="logo">MySite</div>
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Pricing</a>
+      <a href="#">Contact</a>
+      <button class="btn">Get Started</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h2>Build fast websites without pain</h2>
+  <h5>Clean, responsive and accessible layouts for your business</h5>
+
+  <div class="buttons">
+    <button class="btn">Start free</button>
+    <button class="btn secondary">Learn more</button>
+  </div>
+</main>
+
+<section class="gray-section">
+  <div class="container">
+
+    <h3 class="features-title">Features</h3>
+    <div class="cards">
+      <div class="card card-feature">
+        <i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
+        <h4>Responsive Design</h4>
+        <p>Looks great on any device with a fully responsive layout.</p>
+      </div>
+
+      <div class="card card-feature">
+        <i class="fa-solid fa-crop" aria-hidden="true"></i>
+        <h4>Clean Code</h4>
+        <p>Well-structured and easy-to-read code for optimal performance.</p>
+      </div>
+
+      <div class="card card-feature">
+        <i class="fa-solid fa-jet-fighter-up" aria-hidden="true"></i>
+        <h4>Fast Delivery</h4>
+        <p>Quick turnaround time to meet your deadlines.</p>
+      </div>
+    </div>
+
+    <h3 class="pricing-title">Pricing Plans</h3>
+    <div class="cards">
+
+      <div class="card large">
+        <h4>Basic</h4>
+        <div class="price"><span class="currency">$</span>19 <span class="period">/month</span></div>
+        <ul class="project-list">
+          <li class="project-item underline"><i class="fa-solid fa-check" aria-hidden="true"></i>1 Project</li>
+          <li class="project-item underline"><i class="fa-solid fa-check" aria-hidden="true"></i>5 GB Storage</li>
+          <li class="project-item"><i class="fa-solid fa-check" aria-hidden="true"></i>Email Support</li>
+        </ul>
+        <button class="choose-btn">Choose Plan</button>
+      </div>
+
+      <div class="card large">
+        <div class="popular-badge">POPULAR</div>
+        <h4>Pro</h4>
+        <div class="price"><span class="currency">$</span>49 <span class="period">/month</span></div>
+        <ul class="project-list">
+          <li class="project-item underline"><i class="fa-solid fa-check" aria-hidden="true"></i>5 Projects</li>
+          <li class="project-item underline"><i class="fa-solid fa-check" aria-hidden="true"></i>50 GB Storage</li>
+          <li class="project-item"><i class="fa-solid fa-check" aria-hidden="true"></i>Priority Support</li>
+        </ul>
+        <button class="choose-btn primary">Choose Plan</button>
+      </div>
+
+      <div class="card large">
+        <h4>Enterprise</h4>
+        <div class="price"><span class="currency">$</span>99 <span class="period">/month</span></div>
+        <ul class="project-list">
+          <li class="project-item underline"><i class="fa-solid fa-check" aria-hidden="true"></i>Unlimited Projects</li>
+          <li class="project-item underline"><i class="fa-solid fa-check" aria-hidden="true"></i>200 GB Storage</li>
+          <li class="project-item"><i class="fa-solid fa-check" aria-hidden="true"></i>24/7 Support</li>
+        </ul>
+        <button class="choose-btn">Choose Plan</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
